@@ -34,7 +34,7 @@ describe('CreateProductPage', () => {
 
   it('creates a product and navigates to home', async () => {
     const user = userEvent.setup();
-    vi.mocked(createProduct).mockResolvedValueOnce({ id: 1, name: 'Phone', description: 'Smartphone', price: 899 });
+    vi.mocked(createProduct).mockResolvedValueOnce({ id: 1, name: 'Phone', description: 'Smartphone', price: 899, stock: 100 });
 
     render(<CreateProductPage />);
 

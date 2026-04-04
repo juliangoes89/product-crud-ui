@@ -18,7 +18,7 @@ describe('ProductsPage', () => {
 
   it('loads and renders products', async () => {
     vi.mocked(fetchProducts).mockResolvedValueOnce([
-      { id: 1, name: 'Laptop', description: 'Business laptop', price: 1500 },
+      { id: 1, name: 'Laptop', description: 'Business laptop', price: 1500, stock: 100 },
     ]);
 
     render(
@@ -49,7 +49,7 @@ describe('ProductsPage', () => {
   it('deletes a product and updates the list', async () => {
     const user = userEvent.setup();
     vi.mocked(fetchProducts).mockResolvedValueOnce([
-      { id: 2, name: 'Headset', description: 'Noise cancelling', price: 220 },
+      { id: 2, name: 'Headset', description: 'Noise cancelling', price: 220, stock: 100  },
     ]);
     vi.mocked(deleteProduct).mockResolvedValueOnce(undefined);
 

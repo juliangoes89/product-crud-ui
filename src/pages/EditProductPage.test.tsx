@@ -36,8 +36,8 @@ describe('EditProductPage', () => {
 
   it('loads product and updates successfully', async () => {
     const user = userEvent.setup();
-    vi.mocked(fetchProduct).mockResolvedValueOnce({ id: 7, name: 'Old', description: 'Old desc', price: 20 });
-    vi.mocked(updateProduct).mockResolvedValueOnce({ id: 7, name: 'Updated', description: 'Updated desc', price: 55 });
+    vi.mocked(fetchProduct).mockResolvedValueOnce({ id: 7, name: 'Old', description: 'Old desc', price: 20, stock: 100 });
+    vi.mocked(updateProduct).mockResolvedValueOnce({ id: 7, name: 'Updated', description: 'Updated desc', price: 55, stock: 100 });
 
     render(<EditProductPage />);
 
@@ -63,7 +63,7 @@ describe('EditProductPage', () => {
 
   it('shows update error when update fails', async () => {
     const user = userEvent.setup();
-    vi.mocked(fetchProduct).mockResolvedValueOnce({ id: 7, name: 'Old', description: 'Old desc', price: 20 });
+    vi.mocked(fetchProduct).mockResolvedValueOnce({ id: 7, name: 'Old', description: 'Old desc', price: 20, stock: 100 });
     vi.mocked(updateProduct).mockRejectedValueOnce(new Error('update failed'));
 
     render(<EditProductPage />);
@@ -78,7 +78,7 @@ describe('EditProductPage', () => {
 
   it('navigates home when cancel is clicked', async () => {
     const user = userEvent.setup();
-    vi.mocked(fetchProduct).mockResolvedValueOnce({ id: 7, name: 'Old', description: 'Old desc', price: 20 });
+    vi.mocked(fetchProduct).mockResolvedValueOnce({ id: 7, name: 'Old', description: 'Old desc', price: 20, stock: 100 });
 
     render(<EditProductPage />);
 

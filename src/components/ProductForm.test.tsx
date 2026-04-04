@@ -22,13 +22,14 @@ describe('ProductForm', () => {
       name: 'Keyboard',
       description: 'Mechanical keyboard',
       price: 129.99,
+      stock: 100,
     });
   });
 
   it('shows update button and prefilled values in edit mode', () => {
     render(
       <ProductForm
-        product={{ id: 1, name: 'Mouse', description: 'Wireless mouse', price: 25 }}
+        product={{ id: 1, name: 'Mouse', description: 'Wireless mouse', price: 25, stock: 100 }}
         onSubmit={vi.fn()}
       />,
     );

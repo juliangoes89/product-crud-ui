@@ -11,6 +11,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit }) => {
   const [name, setName] = useState<string>(product ? product.name : '');
   const [description, setDescription] = useState<string>(product ? product.description : '');
   const [price, setPrice] = useState<number | ''>(product ? product.price : '');
+  const [stock, setStock] = useState<number | ''>(product ? product.stock : 100);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,6 +19,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit }) => {
       name,
       description,
       price: Number(price),
+      stock: Number(stock)
     };
 
     await onSubmit(productData);
@@ -54,6 +56,17 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit }) => {
           value={price}
           onChange={(e) => setPrice(e.target.value ? Number(e.target.value) : '')}
           placeholder="0.00"
+          required
+        />
+      </div>
+      <div className="field">
+        <label htmlFor="stock">Stock:</label>
+        <input
+          id="stock"
+          type="number"
+          value={stock}
+          onChange={(e) => setStock(e.target.value ? Number(e.target.value) : '')}
+          placeholder="0"
           required
         />
       </div>

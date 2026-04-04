@@ -29,8 +29,8 @@ describe('ProductList', () => {
     const onEdit = vi.fn();
     const onDelete = vi.fn();
     const products: Product[] = [
-      { id: 1, name: 'Laptop', description: 'Business laptop', price: 1200 },
-      { id: 2, name: 'Mouse', description: 'Wireless mouse', price: 25 },
+      { id: 1, name: 'Laptop', description: 'Business laptop', price: 1200 , stock: 100},
+      { id: 2, name: 'Mouse', description: 'Wireless mouse', price: 25 , stock: 100},
     ];
 
     render(<ProductList products={products} onEdit={onEdit} onDelete={onDelete} />);
