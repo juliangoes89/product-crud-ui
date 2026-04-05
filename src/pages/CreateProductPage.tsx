@@ -12,7 +12,7 @@ const CreateProductPage: React.FC = () => {
         try {
             await createProduct(product);
             setSuccess('Product created successfully!');
-            navigate('/');
+            setTimeout(() => navigate('/'), 2000);
         } catch {
             setError('Failed to create product. Please try again.');
         }

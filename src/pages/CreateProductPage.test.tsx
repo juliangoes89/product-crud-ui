@@ -32,7 +32,7 @@ describe('CreateProductPage', () => {
     vi.clearAllMocks();
   });
 
-  it('creates a product and navigates to home', async () => {
+  it('creates a product and navigates to home after 2000 milliseconds', async () => {
     const user = userEvent.setup();
     vi.mocked(createProduct).mockResolvedValueOnce({ id: 1, name: 'Phone', description: 'Smartphone', price: 899, stock: 100 });
 
@@ -41,7 +41,10 @@ describe('CreateProductPage', () => {
     await user.click(screen.getByRole('button', { name: 'Mock Submit' }));
 
     expect(createProduct).toHaveBeenCalledWith({ name: 'Phone', description: 'Smartphone', price: 899 });
-    expect(mockNavigate).toHaveBeenCalledWith('/');
+    expect(mockNavigate).not.toHaveBeenCalled();
+    setTimeout(() => {
+      expect(mockNavigate).toHaveBeenCalledWith('/');
+    }, 2100);
   });
 
   it('shows an error when create fails', async () => {

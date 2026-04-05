@@ -12,6 +12,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit }) => {
   const [description, setDescription] = useState<string>(product ? product.description : '');
   const [price, setPrice] = useState<number | ''>(product ? product.price : '');
   const [stock, setStock] = useState<number | ''>(product ? product.stock : 100);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +22,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit }) => {
       price: Number(price),
       stock: Number(stock)
     };
-
+    setDisabled(true);
     await onSubmit(productData);
+    setDisabled(false);
   };
 
   return (
@@ -70,7 +72,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit }) => {
           required
         />
       </div>
-      <button className="btn btn-primary" type="submit">{product ? 'Update Product' : 'Create Product'}</button>
+      <button className="btn btn-primary" type="submit" disabled={disabled}>{product ? 'Update Product' : 'Create Product'}</button>
     </form>
   );
 };
