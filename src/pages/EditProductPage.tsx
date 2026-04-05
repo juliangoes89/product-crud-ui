@@ -10,6 +10,7 @@ const EditProductPage: React.FC = () => {
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<string | null>(null);
 
     useEffect(() => {
         const getProduct = async () => {
@@ -37,7 +38,8 @@ const EditProductPage: React.FC = () => {
 
         try {
             await updateProduct(id, updatedProduct);
-            navigate('/');
+            setSuccess('Product updated successfully!');
+            setTimeout(() => navigate('/'), 2000);
         } catch {
             setError('Failed to update product');
         }
@@ -52,8 +54,9 @@ const EditProductPage: React.FC = () => {
             <section className="surface">
                 <h1 className="page-title">Edit Product</h1>
                 <p className="subtle">Update product details and save your changes.</p>
+                {success && <p className="success">{success}</p>}
                 <ProductForm product={product} onSubmit={handleSubmit} />
-                                <button className="btn btn-secondary mt-16" onClick={() => navigate('/')}>Cancel</button>
+                <button className="btn btn-secondary mt-16" onClick={() => navigate('/')}>Cancel</button>
             </section>
         </div>
     );
