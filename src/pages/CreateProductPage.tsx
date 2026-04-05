@@ -23,9 +23,9 @@ const CreateProductPage: React.FC = () => {
             <section className="surface">
                 <h1 className="page-title">Create Product</h1>
                 <p className="subtle">Add a new item to your catalog.</p>
+                <ProductForm onSubmit={handleSubmit} />
                 {error && <p className="error">{error}</p>}
                 {success && <p className="success">{success}</p>}
-                <ProductForm onSubmit={handleSubmit} />
                 <button className="btn btn-secondary mt-16" onClick={() => navigate('/')}>Cancel</button>
             </section>
         </div>
