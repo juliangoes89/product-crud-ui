@@ -17,6 +17,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products, onEdit, onDelete 
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Stock</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -27,6 +28,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products, onEdit, onDelete 
               <td>{product.name}</td>
               <td>{product.description}</td>
               <td>${product.price.toFixed(2)}</td>
+              <td>{product.stock}</td>
               <td className="actions">
                 <button className="btn btn-tonal" onClick={() => onEdit(product)}>Edit</button>
                 <button className="btn btn-danger" onClick={() => onDelete(product.id)}>Delete</button>
