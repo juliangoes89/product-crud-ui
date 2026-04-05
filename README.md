@@ -50,6 +50,28 @@ To get started with the project, follow these steps:
 4. **Open your browser:**
    Navigate to `http://localhost:3000` to view the application.
 
+## Testing
+
+Run unit tests once:
+
+```bash
+npm run test
+```
+
+Run tests in watch mode:
+
+```bash
+npm run test:watch
+```
+
+Generate coverage report:
+
+```bash
+npm run test:coverage
+```
+
+Coverage artifacts are generated in the `coverage/` folder.
+
 ## API Integration
 
 The application communicates with a product API. Ensure that the API is running and accessible. The API endpoints are defined in the `src/api/products.ts` file.

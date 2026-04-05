@@ -9,12 +9,14 @@ describe('ProductTable', () => {
     const user = userEvent.setup();
     const onEdit = vi.fn();
     const onDelete = vi.fn();
-    const product = { id: 7, name: 'Monitor', description: '27-inch', price: 299.5 };
+    const product = { id: 7, name: 'Monitor', description: '27-inch', price: 299.5, stock:100 };
 
     render(<ProductTable products={[product]} onEdit={onEdit} onDelete={onDelete} />);
 
     expect(screen.getByText('Monitor')).toBeTruthy();
     expect(screen.getByText('$299.50')).toBeTruthy();
+    expect(screen.getByText('100')).toBeTruthy();
+
 
     await user.click(screen.getByRole('button', { name: /edit/i }));
     await user.click(screen.getByRole('button', { name: /delete/i }));

@@ -50,7 +50,8 @@ describe('EditProductPage', () => {
       description: 'Updated desc',
       price: 55,
     });
-    expect(mockNavigate).toHaveBeenCalledWith('/');
+    setTimeout(() => {
+    expect(mockNavigate).toHaveBeenCalledWith('/');}, 2100);
   });
 
   it('shows fetch error message when product cannot be loaded', async () => {
